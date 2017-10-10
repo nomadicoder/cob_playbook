@@ -1,0 +1,31 @@
+---
+# Install rbenv-sudo and default ruby
+- name: install rbenv
+  git:
+    repo: https://github.com/rbenv/rbenv.git
+    dest: "/home/{{ app_user }}/.rbenv"
+- name: Put rbenv in execution path
+  lineinfile:
+    dest: "/home/{{ app_user }}/.bash_profile"
+    line: 'export PATH="$HOME/.rbenv/bin:$PATH"'
+- name: Initialize rbenv on login
+  lineinfile:
+    dest: "/home/{{ app_user }}/.bash_profile"
+    line: 'eval "$(rbenv init -)"'
+- name: install ruby-build
+  git:
+    repo: https://github.com/rbenv/ruby-build.git
+    dest: "/home/{{ app_user }}/.rbenv/plugins/ruby-build"
+- name: "check ruby {{ ruby_version }} installed"
+  shell: "/home/{{ app_user }}/.rbenv/bin/rbenv versions | grep {{ ruby_version }}"
+  register: ruby_installed
+  ignore_errors: yes
+- name: "install ruby {{ ruby_version }}"
+  command: "/home/{{ app_user }}/.rbenv/bin/rbenv install {{ ruby_version }}"
+  when: ruby_installed|failed
+- name: set default ruby
+  command: "/home/{{ app_user }}/.rbenv/bin/rbenv global {{ ruby_version }}"
+- name: install bundler
+  command: "/home/{{ app_user }}/.rbenv/shims/gem install bundler --no-ri"
+- name: install rails
+  command: "/home/{{ app_user }}/.rbenv/shims/gem install rails -v {{ rails_version }} --no-ri"

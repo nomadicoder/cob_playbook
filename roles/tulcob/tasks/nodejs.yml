@@ -1,0 +1,11 @@
+# Intall NodeJS
+- name: download nodejs
+  unarchive: src=http://nodejs.org/dist/{{ nodejs_version }}/node-{{ nodejs_version }}.tar.gz dest=/tmp copy=no
+- name: configure nodejs
+  command: ./configure
+  args:
+    chdir: /tmp/node-{{ nodejs_version }}
+- name: build nodejs
+  command: make -C /tmp/node-{{ nodejs_version }}
+- name: install nodejs
+  command: make -C /tmp/node-{{ nodejs_version }} install

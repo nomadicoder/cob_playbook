@@ -1,0 +1,12 @@
+default: &default
+  apikey: "{{ alma_api_key }}"
+
+development:
+    <<: *default
+
+test:
+    <<: *default
+
+production:
+    <<: *default
+

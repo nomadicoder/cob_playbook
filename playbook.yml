@@ -1,0 +1,10 @@
+---
+
+- name: tulcob
+  hosts: all
+  remote_user: vagrant
+  become: yes
+  vars:
+    app_user: vagrant
+  roles:
+    - { role: tulcob }

@@ -1,0 +1,12 @@
+---
+
+nodejs_version: v0.10.4
+ruby_version: 2.4.1
+rails_version: 5.0.0.1
+java_version: 1.8.0
+blacklight_version: 6.7.1
+domainname: localhost
+app_repo: https://github.com/tulibraries/tul_cob.git
+app_name: tul_cob
+app_path: /var/www/{{ app_name }}
+app_version: master

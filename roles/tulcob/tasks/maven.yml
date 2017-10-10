@@ -1,0 +1,5 @@
+- name: Install Apache maven
+  package:
+    name: maven
+    state: latest
+    use: "{{ package_manager }}"
