@@ -2,13 +2,13 @@ version: "2"
 settings:
   conductor_base: centos:7
 defaults:
-  app_name: tulcob
+  app_name: stevia
   app_user: "{{ app_name }}"
 services:
   web:
     from: centos:7
     roles:
-      - tulcob
+      - stevia
     ports:
       - "3001:3000"
       - "5001:5000"
@@ -16,7 +16,7 @@ services:
     entrypoint: ["/usr/bin/dumb-init", "/bin/bash"]
     user: "{{ app_name }}"
     volumes:
-      - "{{ roles_path }}/../tulcob:/var/www/{{ app_name }}"
+      - "{{ roles_path }}/../stevia:/var/www/{{ app_name }}"
     working_dir: "/var/www/{{ app_name }}"
     dev_overrides:
       environment:
