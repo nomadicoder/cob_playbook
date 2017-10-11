@@ -18,3 +18,4 @@
     owner: "{{ app_user }}"
     group: "{{ app_user }}"
     mode: 0755
+
