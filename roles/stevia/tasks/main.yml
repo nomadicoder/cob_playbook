@@ -9,7 +9,7 @@
 #- include: "{{ appname}}.yml"
 - include: ruby.yml
   become : "{{ app_user }}"
-- command: "/home/{{ app_user }}/.rbenv/shims/bundle install"
-  args:
-    chdir: "{{ app_path }}"
-  remote_user: "{{ app_user }}"
+#- command: "/home/{{ app_user }}/.rbenv/shims/bundle install"
+#  args:
+#    chdir: "{{ app_path }}"
+#  become: "{{ app_user }}"
