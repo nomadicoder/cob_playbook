@@ -19,13 +19,29 @@
   args:
     chdir: "{{ app_path }}"
   become: "{{ app_user }}"
-- template:
+- name: Alma configuration
+  template:
     src: templates/alma.yml
     dest: "{{ app_path }}/config"
     owner: "{{ app_user }}"
     group: "{{ app_user }}"
     mode: 0755
-- template:
+- name: Deploy-to configuration
+  template:
+    src: templates/deploy_to.yml
+    dest: "{{ app_path }}/config"
+    owner: "{{ app_user }}"
+    group: "{{ app_user }}"
+    mode: 0755
+- name: Bento configuration
+  template:
+    src: templates/bento.yml
+    dest: "{{ app_path }}/config"
+    owner: "{{ app_user }}"
+    group: "{{ app_user }}"
+    mode: 0755
+- name: Server secrets
+  template:
     src: templates/secrets.yml
     dest: "{{ app_path }}/config"
     owner: "{{ app_user }}"
