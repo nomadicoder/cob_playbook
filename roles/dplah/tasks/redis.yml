@@ -1,0 +1,24 @@
+# Redis
+- name: download redis
+  get_url: url=http://download.redis.io/redis-stable.tar.gz dest=/tmp/redis-stable.tar.gz
+- name: untar redis
+  unarchive: src=/tmp/redis-stable.tar.gz dest=/tmp copy=no
+- name: build redis
+  command: make -C /tmp/redis-stable
+- name: install redis
+  command: make -C /tmp/redis-stable install
+- name: Make redis configuration directory
+  file:
+    path: /etc/redis
+    state: directory
+- name: Make redis directory
+  file:
+    path: /var/redis
+    state: directory
+- command: cp -p /tmp/redis-stable/utils/redis_init_script /etc/rc.d/init.d/redis_6379
+- lineinfile: dest=/etc/rc.d/init.d/redis_6379 regexp="^REDISPORT" line="REDISPORT=6379"
+- command: cp -p /tmp/redis-stable/redis.conf /etc/redis/6379.conf
+- name: Make redis process directory
+  file:
+    path: /var/redis/6379
+    state: directory

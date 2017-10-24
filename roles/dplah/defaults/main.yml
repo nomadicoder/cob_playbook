@@ -1,0 +1,13 @@
+---
+
+nodejs_version: v0.10.4
+ruby_version: 2.2.4
+rails_version: 4.1.4
+java_version: 1.8.0
+hydra_version: 7.1.0
+fits_version: 1.0.5
+domainname: localhost
+app_repo: https://github.com/tulibraries/dplah.git
+app_name: dplah
+app_path: /var/www/{{ app_name }}
+app_version: master

@@ -1,0 +1,13 @@
+# Intall FITS
+#- unarchive: src="http://projects.iq.harvard.edu/files/fits/files/fits-{{ fits_version }}.zip" dest=/usr/local/bin mode=655 copy=no
+- name: check fits installed
+  command: bash -lc "find /opt/fits-{{ fits_version }} | grep fits.sh"
+  register: fits_installed
+  ignore_errors: yes
+- name: Install fits
+  get_url: url=http://projects.iq.harvard.edu/files/fits/files/fits-{{ fits_version }}.zip dest=/opt/fits-{{ fits_version }}.zip
+  when: fits_installed|failed
+- unarchive: src=/opt/fits-{{ fits_version }}.zip dest=/opt copy=no
+  when: fits_installed|failed
+- file: path=/opt/fits-{{ fits_version }}/fits.sh mode=0755
+  when: fits_installed|failed

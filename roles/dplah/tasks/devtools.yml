@@ -1,0 +1,26 @@
+# Devtools
+- name: install 'Development tools' package group
+  package:
+    name: "@Development tools"
+    state: present
+    use: "{{ package_manager }}"
+- name: Install package dependencies
+  package: 
+    name: "{{ item }}"
+    state: latest
+    use: "{{ package_manager }}"
+  with_items:
+    - git-core
+    - zip
+    - curl
+    - readline-devel
+    - python
+    - libselinux-python
+    - libyaml
+    - openssl-devel
+    - libtool
+    - sqlite-devel
+    - libxml2-devel
+    - libxslt-devel
+    - ImageMagick
+    - libreoffice

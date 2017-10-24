@@ -1,0 +1,15 @@
+---
+- include: dumb_init.yml
+- include: devtools.yml
+- include: fits.yml
+- include: java.yml
+- include: nodejs.yml
+- include: app_user.yml
+- include: redis.yml
+#- include: "{{ appname}}.yml"
+- include: ruby.yml
+  become : "{{ app_user }}"
+#- command: "/home/{{ app_user }}/.rbenv/shims/bundle install"
+#  args:
+#    chdir: "{{ app_path }}"
+#  become: "{{ app_user }}"
