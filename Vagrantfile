@@ -5,8 +5,8 @@
 VAGRANTFILE_API_VERSION = "2"
 
 # Set the application name
-APP_NAME = "stevia"
-SRC_NAME = "stevia"
+APP_NAME = "dplah"
+SRC_NAME = "dplah"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "centos/7"
@@ -17,7 +17,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #config.vm.network "forwarded_port", guest: 8985, host: 8985
   #config.vm.network :forwarded_port, guest: 4000, host: 4000
 
-  config.vm.synced_folder "../stevia", "/var/www/#{APP_NAME}"
+  config.vm.synced_folder "../#{SRC_NAME}", "/var/www/#{APP_NAME}_dev"
   config.vm.synced_folder ".", "/vagrant", disabled: true
 
   #config.vm.network "private_network", ip: "192.168.33.11"
