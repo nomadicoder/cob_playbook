@@ -5,6 +5,7 @@
     repo: "{{ app_repo }}"
     dest: "{{ app_path }}"
     version: "{{ app_version }}"
+    update: no
 - name: Change directory attributes
   file:
     path: "{{ app_path }}"
@@ -18,12 +19,6 @@
   args:
     chdir: "{{ app_path }}"
   remote_user: "{{ app_user }}"
-- template:
-    src: templates/alma.yml
-    dest: "{{ app_path }}/config"
-    owner: "{{ app_user }}"
-    group: "{{ app_user }}"
-    mode: 0755
 - template:
     src: templates/secrets.yml
     dest: "{{ app_path }}/config"

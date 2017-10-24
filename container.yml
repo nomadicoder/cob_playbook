@@ -2,13 +2,13 @@ version: "2"
 settings:
   conductor_base: centos:7
 defaults:
-  app_name: stevia
+  app_name: dplah
   app_user: "{{ app_name }}"
 services:
   web:
     from: centos:7
     roles:
-      - stevia
+      - dplah
     ports:
       - "3001:3000"
       - "5001:5000"
@@ -16,7 +16,7 @@ services:
     entrypoint: ["/usr/bin/dumb-init", "/bin/bash"]
     user: "{{ app_name }}"
     volumes:
-      - "{{ roles_path }}/../stevia:/var/www/{{ app_name }}"
+      - "{{ roles_path }}/../dplah:/var/www/{{ app_name }}_dev"
     working_dir: "/var/www/{{ app_name }}"
     dev_overrides:
       environment:
