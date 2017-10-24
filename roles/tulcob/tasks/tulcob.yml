@@ -5,6 +5,7 @@
     repo: "{{ app_repo }}"
     dest: "{{ app_path }}"
     version: "{{ app_version }}"
+    update: no
 - name: Change directory attributes
   file:
     path: "{{ app_path }}"
@@ -17,7 +18,7 @@
   command: "/home/{{ app_user }}/.rbenv/shims/bundle install"
   args:
     chdir: "{{ app_path }}"
-  remote_user: "{{ app_user }}"
+  become: "{{ app_user }}"
 - template:
     src: templates/alma.yml
     dest: "{{ app_path }}/config"
@@ -34,7 +35,7 @@
   command: "/home/{{ app_user }}/.rbenv/shims/rake db:migrate"
   args:
     chdir: "{{ app_path }}"
-  remote_user: "{{ app_user }}"
+  become: "{{ app_user }}"
 - name: install foreman
   command: "/home/{{ app_user }}/.rbenv/shims/gem install foreman --no-ri"
 - copy:
