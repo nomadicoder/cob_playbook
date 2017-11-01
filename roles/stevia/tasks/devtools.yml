@@ -16,6 +16,7 @@
     - readline-devel
     - python
     - libselinux-python
+    - libmediainfo
     - libyaml
     - openssl-devel
     - libtool

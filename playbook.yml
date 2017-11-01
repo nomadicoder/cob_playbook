@@ -7,4 +7,5 @@
   vars:
     app_user: vagrant
   roles:
+    - role: geerlingguy.repo-epel
     - { role: stevia }

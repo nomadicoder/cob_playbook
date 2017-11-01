@@ -1,0 +1,4 @@
+---
+
+- src: geerlingguy.repo-epel
+  path: external_roles/

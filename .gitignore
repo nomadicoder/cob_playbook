@@ -1,3 +1,4 @@
 *.retry
 .vagrant
 *.swp
+external_roles/*
