@@ -8,4 +8,5 @@
     app_user: vagrant
   roles:
     - role: geerlingguy.repo-epel
+    - role: openmicroscopy.postgresql
     - { role: stevia }

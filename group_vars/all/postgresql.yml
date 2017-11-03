@@ -1,0 +1,8 @@
+---
+
+postgresql_version: "9.4"
+postgresql_users:
+  - user: "{{ app_user }}"
+    password: ""
+    databases: []
+    role_attr_flags: CREATEDB,CREATEROLE,SUPERUSER

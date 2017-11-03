@@ -25,3 +25,6 @@
     - libxslt-devel
     - ImageMagick
     - libreoffice
+    - postgresql-libs
+    - postgresql-devel
+    - postgresql94-contrib
