@@ -1,7 +1,7 @@
 ---
 
 - name: tulcob
-  hosts: all
+  hosts: app
   remote_user: vagrant
   become: yes
   vars:
