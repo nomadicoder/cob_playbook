@@ -1,0 +1,2 @@
+solr_xms: "1024M"
+solr_xmx: "2048M"
