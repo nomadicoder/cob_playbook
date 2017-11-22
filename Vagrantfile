@@ -17,7 +17,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #config.vm.network "forwarded_port", guest: 8985, host: 8985
   #config.vm.network :forwarded_port, guest: 4000, host: 4000
 
-  config.vm.synced_folder "../stevia", "/var/www/#{APP_NAME}"
+  config.vm.synced_folder "../#{SRC_NAME}", "/var/www/dev_#{APP_NAME}"
   config.vm.synced_folder ".", "/vagrant", disabled: true
 
   #config.vm.network "private_network", ip: "192.168.33.11"

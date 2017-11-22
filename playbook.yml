@@ -1,5 +1,50 @@
 ---
 
+- name: Prepare the server
+  hosts: app
+  become: yes
+  roles:
+    - role: geerlingguy.repo-epel
+  tags:
+    - epel
+    
+- name: devtools
+  hosts: app
+  become: yes
+  roles:
+    - role: devtools
+    
+- name: app_user
+  hosts: app
+  become: yes
+  roles:
+    - role: app_user
+    
+- name: Ensure that the app user exists and install rbenv, ruby, and rails
+  hosts: app
+  become: "{{ app_user }}"
+  roles:
+    - role: ruby 
+  tags:
+    - rbenv
+    - ruby
+    - rails
+
+- name: Install Solr
+  hosts: app
+  become: yes
+  roles:
+    - geerlingguy.java
+    - geerlingguy.solr
+  tags:
+    - solr
+
+- name: nodejs
+  hosts: app
+  become: yes
+  roles:
+    - role: nodejs
+    
 - name: stevia
   hosts: app
   remote_user: vagrant
@@ -7,5 +52,4 @@
   vars:
     app_user: vagrant
   roles:
-    - role: geerlingguy.repo-epel
-    - { role: stevia }
+    - role: stevia 

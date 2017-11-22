@@ -1,0 +1,14 @@
+---
+
+- src: geerlingguy.solr
+  path: external_roles/
+
+- src: geerlingguy.java
+  path: external_roles/
+
+- src: geerlingguy.repo-epel
+  path: external_roles/
+
+- src: zzet.rbenv
+  path: external_roles/
+  version: 2.2.5

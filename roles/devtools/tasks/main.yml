@@ -16,7 +16,6 @@
     - readline-devel
     - python
     - libselinux-python
-    - libmediainfo
     - libyaml
     - openssl-devel
     - libtool
@@ -24,4 +23,3 @@
     - libxml2-devel
     - libxslt-devel
     - ImageMagick
-    - libreoffice
