@@ -45,11 +45,9 @@
   roles:
     - role: nodejs
     
-- name: stevia
+- name: hyrax app
   hosts: app
-  remote_user: vagrant
+  remote_user: "{{ app_user }}"
   become: yes
-  vars:
-    app_user: vagrant
   roles:
-    - role: stevia 
+    - role: hyrax_app

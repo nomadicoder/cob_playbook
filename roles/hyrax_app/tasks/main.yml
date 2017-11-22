@@ -1,6 +1,6 @@
 ---
-# Install tulcob
-- name: Clone TULCOB
+# Install Hyrax app
+- name: Clone Hyrax app
   git:
     repo: "{{ app_repo }}"
     dest: "{{ app_path }}"
