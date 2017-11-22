@@ -1,0 +1,11 @@
+---
+
+rbenv:
+  env: user
+  version: v1.0.0
+  default_ruby: 2.4.1
+  rubies:
+    - version: 2.4.1
+
+rbenv_owner: "{{ app_user }}"
+rbenv_group: "{{ app_user }}"

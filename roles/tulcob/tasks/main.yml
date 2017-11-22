@@ -1,9 +1,60 @@
 ---
-- include: dumb_init.yml
-- include: devtools.yml
-- include: java.yml
-- include: nodejs.yml
-- include: app_user.yml
-- include: ruby.yml
+# Install tulcob
+- name: Clone TULCOB
+  git:
+    repo: "{{ app_repo }}"
+    dest: "{{ app_path }}"
+    version: "{{ app_version }}"
+    update: no
+- name: Change directory attributes
+  file:
+    path: "{{ app_path }}"
+    owner: "{{ app_user }}"
+    group: "{{ app_user }}"
+    mode: 0755
+    recurse: yes
+    state: directory
+- name: Install Ruby gems
+  command: "/home/{{ app_user }}/.rbenv/shims/bundle install"
+  args:
+    chdir: "{{ app_path }}"
   become: "{{ app_user }}"
-- include: tulcob.yml
+- name: Alma configuration
+  template:
+    src: templates/alma.yml
+    dest: "{{ app_path }}/config"
+    owner: "{{ app_user }}"
+    group: "{{ app_user }}"
+    mode: 0755
+- name: Deploy-to configuration
+  template:
+    src: templates/deploy_to.yml
+    dest: "{{ app_path }}/config"
+    owner: "{{ app_user }}"
+    group: "{{ app_user }}"
+    mode: 0755
+- name: Bento configuration
+  template:
+    src: templates/bento.yml
+    dest: "{{ app_path }}/config"
+    owner: "{{ app_user }}"
+    group: "{{ app_user }}"
+    mode: 0755
+- name: Server secrets
+  template:
+    src: templates/secrets.yml
+    dest: "{{ app_path }}/config"
+    owner: "{{ app_user }}"
+    group: "{{ app_user }}"
+    mode: 0755
+- name: Migrate database
+  command: "/home/{{ app_user }}/.rbenv/shims/rake db:migrate"
+  args:
+    chdir: "{{ app_path }}"
+  become: "{{ app_user }}"
+- name: install foreman
+  command: "/home/{{ app_user }}/.rbenv/shims/gem install foreman --no-ri"
+- copy:
+    src: files/Procfile
+    dest: "{{ app_path }}"
+    mode: 0755
