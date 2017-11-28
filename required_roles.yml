@@ -1,6 +1,0 @@
----
-
-- src: geerlingguy.repo-epel
-  path: external_roles/
-- src: openmicroscopy.postgresql
-  path: external_roles/
