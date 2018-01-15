@@ -2,4 +2,5 @@
 
 solr_version: "6.5.0"
 solr_cores:
-  - blacklight-core
+  - blacklight-core-dev
+  - blacklight-core-test
